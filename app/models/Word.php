@@ -12,4 +12,12 @@ class Word extends Eloquent {
     public function user() {
     	return $this->belongsTo('User');
     }
+
+    /**
+    * Words belongs to topic
+    * @return topic
+    **/
+    public function topic() {
+    	return $this->belongsTo('Topic');
+    }
 }

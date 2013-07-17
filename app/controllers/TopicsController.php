@@ -9,7 +9,9 @@ class TopicsController extends BaseController {
      */
     public function index()
     {
-        //
+        $topics = Topic::all();
+
+        return $topics
     }
 
     /**
@@ -17,9 +19,11 @@ class TopicsController extends BaseController {
      *
      * @return Response
      */
-    public function create()
+    public function create($topic)
     {
-        //
+        $topic = Topic::create($topic);
+
+        return $topic;
     }
 
     /**
@@ -40,7 +44,9 @@ class TopicsController extends BaseController {
      */
     public function show($id)
     {
-        //
+        $topic = Topic::find($id)->first()->get();
+
+        return $topic;
     }
 
     /**
