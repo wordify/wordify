@@ -20,6 +20,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array('password');
 
 	/**
+	* Each user has many words
+	*
+	* @return words
+	*/
+	public function words() {
+		return $this->hasMany('Word');
+	}
+
+	/**
 	 * Get the unique identifier for the user.
 	 *
 	 * @return mixed
