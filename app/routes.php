@@ -17,15 +17,9 @@ Route::get('/', function()
 	return 'Hello world';
 });
 
-Route::get('user/create', function()
-{
-
-    return View::make('users.show')->with('name', 'Steve');
-});
-
 Route::get('user/{id}', function($id)
 {
-    return 'User '.$id;
+    return View::make('users.show')->with('userId', $id);
 });
 
 Route::resource('users', 'UsersController');
