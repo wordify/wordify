@@ -27,3 +27,6 @@ Route::get('user/{id}', function($id)
 Route::resource('users', 'UsersController');
 
 Route::resource('words', 'WordsController');
+
+
+Route::resource('topics', 'TopicsController');
