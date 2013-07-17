@@ -44,7 +44,7 @@ class TopicsController extends BaseController {
      */
     public function show($id)
     {
-        $topic = Topic::find($id)->first()->get();
+        $topic = Topic::find($id)->first();
 
         return $topic;
     }
