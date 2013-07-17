@@ -13,8 +13,7 @@
 
 Route::get('/', function()
 {
-	//return View::make('hello');
-	return 'Hello world';
+	return View::make('master');
 });
 
 Route::get('user/{id}', function($id)
