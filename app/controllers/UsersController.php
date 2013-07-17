@@ -9,7 +9,9 @@ class UsersController extends BaseController {
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return $users;
     }
 
     /**
@@ -17,9 +19,11 @@ class UsersController extends BaseController {
      *
      * @return Response
      */
-    public function create()
+    public function create($user)
     {
-        //
+        $user = User::create($user);
+
+        return $user;
     }
 
     /**
@@ -40,7 +44,9 @@ class UsersController extends BaseController {
      */
     public function show($id)
     {
-        //
+        $user = User::find($id)->first();
+    
+        return $user;
     }
 
     /**
@@ -73,7 +79,42 @@ class UsersController extends BaseController {
      */
     public function destroy($id)
     {
-        //
+        $user = User::destroy($id);
+
+        return $user;
+    }
+
+    /**
+    * Get users words
+    * @param userid
+    * @return words
+    **/
+    public function getUsersWords($id) {
+        $words = User::find($id)->words()->get();
+
+        return $words;
+    }
+
+    /**
+    * Count how many words the user have
+    * @param userid
+    * @return count
+    **/
+    public function countUserWords($id) {
+        $wordCount = User::find($id)->words()->count();
+
+        return $wordCount;
+    }
+
+    /**
+    * Get the users last ten words
+    * @param userid
+    * @return words
+    **/
+    public function getLastTenWords($id) {
+        $words = User::find($id)->words()->orderBy('id', 'desc')->take(10)->get();
+
+        return $words;
     }
 
 }

@@ -81,5 +81,4 @@ class WordsController extends BaseController {
     {
         $result = Word::destroy($id);
     }
-
 }
