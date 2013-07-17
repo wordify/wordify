@@ -1,5 +1,7 @@
 @extends('master')
 @section('content')
-	something cool.
+	
+	<input type="text" class="input" name="theWord" placeholder="WRITE YOUR WORD...">
+	
 	{{$userId}}
 @stop

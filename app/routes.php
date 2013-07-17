@@ -13,7 +13,10 @@
 
 Route::get('/', function()
 {
-	return View::make('master');
+	// Add userid session instead of 1
+	$data = array('words' => array('Something', 'Super', 'Cool', 'Love it'));
+
+	return View::make('home.index', $data);
 });
 
 Route::get('user/{id}', function($id)

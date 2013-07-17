@@ -5,7 +5,7 @@
 		<link href="/css/home.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<div class="container">
+		<div id="container">
 			@yield('content')
 		</div>
 	</body>
