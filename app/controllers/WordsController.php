@@ -9,7 +9,9 @@ class WordsController extends BaseController {
      */
     public function index()
     {
-        //
+        $words = Word::all();
+
+        return $words;
     }
 
     /**
@@ -17,9 +19,11 @@ class WordsController extends BaseController {
      *
      * @return Response
      */
-    public function create()
+    public function create($word)
     {
-        //
+        $result = Word::create($word);
+
+        return $result;
     }
 
     /**
@@ -29,7 +33,7 @@ class WordsController extends BaseController {
      */
     public function store()
     {
-        //
+
     }
 
     /**
@@ -40,7 +44,9 @@ class WordsController extends BaseController {
      */
     public function show($id)
     {
-        //
+        $word = Word::find($id)->first();
+
+        return $word;
     }
 
     /**
@@ -73,7 +79,7 @@ class WordsController extends BaseController {
      */
     public function destroy($id)
     {
-        //
+        $result = Word::destroy($id);
     }
 
 }
