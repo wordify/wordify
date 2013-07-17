@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration {
 			$table->string('job')->nullable();
 			$table->string('website')->nullable();
 			$table->integer('userStatus');
+            $table->text('profilePicture');
             $table->timestamps();
         });
     }

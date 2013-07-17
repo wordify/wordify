@@ -16,7 +16,7 @@ class CreateWordsTable extends Migration {
             $table->increments('id');
             $table->text('word');
 			$table->integer('userid');
-			$table->integer('topicid');
+			$table->integer('topic_id');
             $table->timestamps();
         });
     }
