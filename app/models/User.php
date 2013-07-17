@@ -5,6 +5,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -18,6 +19,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password');
+
+	/**
+	* Each user has many words
+	*
+	* @return words
+	*/
+	public function words() {
+		return $this->hasMany('Word');
+	}
 
 	/**
 	 * Get the unique identifier for the user.
