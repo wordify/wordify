@@ -79,6 +79,6 @@ class WordsController extends BaseController {
      */
     public function destroy($id)
     {
-        $result = Word::destroy($id);
+        $result = Word::find($id)->delete();
     }
 }
