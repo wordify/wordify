@@ -79,7 +79,7 @@ class TopicsController extends BaseController {
      */
     public function destroy($id)
     {
-        //
+        $result = Topic::find($id)->delte();
     }
 
 }
