@@ -7,8 +7,12 @@
 	<body>
 		<nav id="topNavigation">
 			<ul id="topBtnUL">
-				<li>Login</li>
-				<li>Register</li>
+				@if(Auth::check())
+					<li><a href="{{ URL::route('user_logout') }}">Log out</a></li>
+				@else
+					<li id="loginButton">Login</li>
+					<li id="createUserButton">Register</li>
+				@endif
 			</ul>
 		</navn>
 		<div id="container">

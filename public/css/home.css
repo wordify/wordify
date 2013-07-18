@@ -240,7 +240,7 @@ select {
 	color: #757474;
 }
 
-#topNavigation ul{
+#topNavigation ul {
 	position: fixed;
 	right: 0;
 	top: 0;
@@ -265,6 +265,11 @@ select {
 #topNavigation ul li:hover {
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#c5c5c5), to(#d5d5d5));
 	background: -moz-linear-gradient(top, #c5c5c5, #d5d5d5);
+}
+
+#topNavigation ul li a {
+	color: #757474;
+	text-decoration: none;
 }
 
 .notificationCounter {
