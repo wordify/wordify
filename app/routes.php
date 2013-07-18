@@ -19,14 +19,20 @@ Route::get('/', function()
 	return View::make('home.index', $data);
 });
 
-Route::get('user/{id}', function($id)
+Route::get('user', function($id)
 {
     return View::make('users.show')->with('userId', $id);
 });
 
+Route::get('users/create', function() 
+{
+	return View::make('users.create');
+});
+
+
+Route::post('users/create', 'UsersController@store');
+
+
 Route::resource('users', 'UsersController');
-
 Route::resource('words', 'WordsController');
-
-
 Route::resource('topics', 'TopicsController');
