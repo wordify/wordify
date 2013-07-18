@@ -1,7 +1,7 @@
 <?php
 
 class Topic extends Eloquent {
-    protected $guarded = array();
+    protected $fillable = array('topic');
 
     public static $rules = array();
 

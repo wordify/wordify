@@ -6,6 +6,12 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	/**
+	* Guarded properties, this allows mass assignments 
+	**/
+	protected $fillable = array('username', 'name', 'email', 'password', 'country', 'job', 'website', 'userStatus', 'profilePicture');
+
+
+	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
