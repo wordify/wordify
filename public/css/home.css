@@ -240,14 +240,15 @@ select {
 	color: #757474;
 }
 
-.topBtnDiv {
+#topNavigation ul{
 	position: fixed;
 	right: 0;
 	top: 0;
 	z-index: 20;
+	list-style-type: none;
 }
 
-.topBtn {
+#topNavigation ul li {
 	display: inline-block;
 	font-family: Arial;
 	border: 1px solid #c5c5c5;
@@ -261,7 +262,7 @@ select {
 	float: left;
 }
 
-.topBtn:hover {
+#topNavigation ul li:hover {
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#c5c5c5), to(#d5d5d5));
 	background: -moz-linear-gradient(top, #c5c5c5, #d5d5d5);
 }
