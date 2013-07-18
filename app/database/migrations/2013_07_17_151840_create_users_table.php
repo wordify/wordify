@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration {
 			$table->string('country')->nullable();
 			$table->string('job')->nullable();
 			$table->string('website')->nullable();
-			$table->integer('userStatus');
-            $table->text('profilePicture');
+			$table->integer('userStatus')->default('0');
+            $table->string('profilePicture')->default('http://wordify.me/profilePicture/unknown.jpg');
             $table->timestamps();
         });
     }
