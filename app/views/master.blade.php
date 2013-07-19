@@ -6,6 +6,7 @@
 		<link href="/css/home.css" rel="stylesheet" type="text/css">
 
 		<!-- Js files -->
+		<script src="/js/jquery.js"></script>
 		<script src="/js/home.js"></script>
 	</head>
 	<body>
