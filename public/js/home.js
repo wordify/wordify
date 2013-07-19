@@ -1,8 +1,9 @@
 $(document).ready(function() {
 	function openModal(itemId) {
+		var modal = '#'+itemId;
 		$('.modal_container').fadeIn();
 		$('.modal_container').addClass(itemId);
-		$('#'.itemId).fadeIn();
+		$(modal).fadeIn();
 	}
 
 	//	Login clicked
