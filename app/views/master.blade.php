@@ -2,7 +2,11 @@
 <html>
 	<head>
 		<title>Wordify - Make your words become real!</title>
+		<!-- CSS files -->
 		<link href="/css/home.css" rel="stylesheet" type="text/css">
+
+		<!-- Js files -->
+		<script src="/js/home.js"></script>
 	</head>
 	<body>
 		<nav id="topNavigation">
@@ -18,6 +22,9 @@
 		<div id="container">
 			@yield('content')
 		</div>
+
+		<!-- Modal box -->
+		<div class="modal_container"></div>
 	</body>
 </html>
 
