@@ -2,19 +2,26 @@
 <html>
 	<head>
 		<title>Wordify - Make your words become real!</title>
-		<link href="/css/home.css" rel="stylesheet" type="text/css">
+		<!-- CSS files -->
+		{{ HTML::style('css/home.css'); }}
 	</head>
 	<body>
+				<!-- Modal box -->
+		<div class="modal_container">
+				@include('modalboxes.login')
+				@include('modalboxes.register')
+		</div>
 		<nav id="topNavigation">
 			<ul id="topBtnUL">
 				@if(Auth::check())
 					<li><a href="{{ URL::route('user_logout') }}">Log out</a></li>
 				@else
-					<li id="loginButton">Login</li>
-					<li id="createUserButton">Register</li>
+					<li><a href='#' id='loginButton'>Login</a></li>
+					<li><a href='#' id='createUserButton'>Register</a></li>
 				@endif
 			</ul>
-		</navn>
+		</nav>
+
 
 		<div id="relatedPeople" align="left">
 			@yield('relatedPeople')
@@ -28,6 +35,10 @@
 			</div>
 		</div>
 	</body>
+
+		<!-- Js files -->
+		{{ HTML::script("js/jquery.js"); }}
+		{{ HTML::script("js/home.js");}}
 </html>
 
 	
