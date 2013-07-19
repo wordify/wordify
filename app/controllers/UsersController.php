@@ -10,10 +10,10 @@ class UsersController extends BaseController {
     public function index()
     {
         $users = User::all();
-        $words = $this->getUsersWords(1);
-        $data = array('users' => $users, 'words' => $words);
+        /*$words = $this->getUsersWords(1);
+        $data = array('users' => $users, 'words' => $words);*/
 
-        return View::make('home.index', $data);
+        return $users;
     }
 
     /**

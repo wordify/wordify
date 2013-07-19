@@ -11,17 +11,11 @@
 |
 */
 
-/**Route::get('/', function()
-{
+Route::get('/', 'HomeController@index');
 
-	users = 
 
-	$data = array('words' => $words);
-
-	return View::make('home.index', $data);
-});*/
-
-Route::get('/', 'UsersController@index');
+// USE TO CALL A METHOD IN A CONTROLLER
+//Route::get('/', 'UsersController@index');
 
 Route::get('user/{id}', function($id)
 {
@@ -40,3 +34,4 @@ Route::post('users/create', 'UsersController@store');
 Route::resource('users', 'UsersController');
 Route::resource('words', 'WordsController');
 Route::resource('topics', 'TopicsController');
+Route::resource('home', 'HomeController');
