@@ -1,7 +1,7 @@
-<div class="modal" id="loginModal">
+<div class="modal" id="registerModal">
 	<h1 id='modalTitle'>Create user</h1>
-	{{ Form::open(array('url' => '/')); }}
-		{{ Form::text('username', 'USERNAME')) }}
+	{{ Form::open(array('url' => '/users/')); }}
+		{{ Form::text('username', 'USERNAME') }}
 		{{ Form::password('password') }}
 		{{ Form::text('name', 'FULL NAME') }}
 		{{ Form::email('email', 'EMAIL') }}
