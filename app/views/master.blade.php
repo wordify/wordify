@@ -6,6 +6,10 @@
 		{{ HTML::style('css/home.css'); }}
 	</head>
 	<body>
+				<!-- Modal box -->
+		<div class="modal_container">
+				@include('modalboxes.login')
+		</div>
 		<nav id="topNavigation">
 			<ul id="topBtnUL">
 				@if(Auth::check())
@@ -16,16 +20,9 @@
 				@endif
 			</ul>
 		</nav>
+
 		<div id="container">
 			@yield('content')
-		</div>
-
-		<!-- Modal box -->
-		<div class="modal_container">
-			<div class="modal" id="loginModal">
-			<h1 id='modalTitle'>Login</h1>
-				Hello
-			</div>
 		</div>
 	</body>
 
