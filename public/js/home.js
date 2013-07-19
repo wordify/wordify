@@ -10,4 +10,9 @@ $(document).ready(function() {
     $('#loginButton').on('click', function() {
     	openModal('loginModal');
     });
+
+    // Register clicked
+    $('#createUserButton').on('click', function() {
+    	openModal('registerModal');
+    });
 });
