@@ -20,10 +20,12 @@
 			@yield('relatedPeople')
 		</div>
 
-		<input type="text" class="input" name="theWord" placeholder="WRITE YOUR WORD...">
-
 		<div id="container">
-			@yield('content')
+			@yield('inputWord')
+
+			<div id="words">
+				@yield('words')
+			</div>
 		</div>
 	</body>
 </html>

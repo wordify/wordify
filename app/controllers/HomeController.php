@@ -21,7 +21,8 @@ class HomeController extends BaseController {
 		$users = $usersController->index();
 		$words = $wordsController->index();
 
-		//$this->layout->content = View::make('users.index');
+		$this->layout->inputWord = View::make('words.inputWord');
+		$this->layout->words = View::make('words.index', ['words' => $words]);
 		$this->layout->relatedPeople = View::make('users.relatedPeople');
 
 	}
