@@ -11,15 +11,19 @@
 |
 */
 
-Route::get('/', function()
+/**Route::get('/', function()
 {
-	// Add userid session instead of 1
-	$data = array('words' => array('Something', 'Super', 'Cool', 'Love it'));
+
+	users = 
+
+	$data = array('words' => $words);
 
 	return View::make('home.index', $data);
-});
+});*/
 
-Route::get('user', function($id)
+Route::get('/', 'UsersController@index');
+
+Route::get('user/{id}', function($id)
 {
     return View::make('users.show')->with('userId', $id);
 });
