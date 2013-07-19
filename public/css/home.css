@@ -240,11 +240,15 @@ select {
 	color: #757474;
 }
 
-#topNavigation ul {
+#topNavigation {
 	position: fixed;
+	float: left;
 	right: 0;
 	top: 0;
 	z-index: 20;
+}
+
+#topNavigation ul {
 	list-style-type: none;
 }
 
