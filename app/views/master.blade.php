@@ -9,6 +9,7 @@
 				<!-- Modal box -->
 		<div class="modal_container">
 				@include('modalboxes.login')
+				@include('modalboxes.register')
 		</div>
 		<nav id="topNavigation">
 			<ul id="topBtnUL">
@@ -16,7 +17,7 @@
 					<li><a href="{{ URL::route('user_logout') }}">Log out</a></li>
 				@else
 					<li><a href='#' id='loginButton'>Login</a></li>
-					<li id="createUserButton">Register</li>
+					<li><a href='#' id='createUserButton'>Register</a></li>
 				@endif
 			</ul>
 		</nav>
