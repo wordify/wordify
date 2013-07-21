@@ -26,11 +26,16 @@ Route::get('users/create', function()
 {
 	return View::make('users.create');
 });
-
-
 Route::post('users/create', 'UsersController@store');
 
 
+// Login
+Route::post('login', 'UsersController@login');
+Route::get('logout', 'UsersController@logout');
+
+
+
+// Resources
 Route::resource('users', 'UsersController');
 Route::resource('words', 'WordsController');
 Route::resource('topics', 'TopicsController');
