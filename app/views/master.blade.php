@@ -14,7 +14,7 @@
 		<nav id="topNavigation">
 			<ul id="topBtnUL">
 				@if(Auth::check())
-					<li><a href="{{ URL::route('user_logout') }}">Log out</a></li>
+					<li><a href="{{ URL::to('logout') }}">Log out</a></li>
 				@else
 					<li><a href='#' id='loginButton'>Login</a></li>
 					<li><a href='#' id='createUserButton'>Register</a></li>
