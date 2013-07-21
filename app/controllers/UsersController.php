@@ -62,6 +62,31 @@ class UsersController extends BaseController {
     }
 
     /**
+    * Logs the user in
+    * @return Redirect frontpage
+    **/
+    public function login() {
+        $credentials = array(
+            'username' => Input::get('username'),
+            'password' => Input::get('password')
+        );
+
+        Auth::attempt($credentials);
+        
+        return Redirect::to('/');
+    }
+
+    /**
+    * Logs user out
+    * @return Redirect frontpage
+    **/
+    public function logout() {
+        Auth::logout();
+
+        return Redirect::to('/');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
