@@ -5,7 +5,7 @@
 	"require": {
 		"laravel/framework": "4.0.*",
 		"way/generators": "dev-master",
-		"lusitanian/oauth": "0.1.*@dev"
+		"hwi/oauth-bundle": "0.3.*@dev"
 	},
 	"autoload": {
 		"classmap": [
