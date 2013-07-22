@@ -30,6 +30,8 @@ Route::post('users/create', 'UsersController@store');
 
 
 // Login
+Route::get('login/{provider}', 'OauthController@index');
+
 Route::post('login', 'UsersController@login');
 Route::get('logout', 'UsersController@logout');
 
