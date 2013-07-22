@@ -5,7 +5,7 @@
 	"require": {
 		"laravel/framework": "4.0.*",
 		"way/generators": "dev-master",
-		"hwi/oauth-bundle": "0.3.*@dev"
+		"taylorotwell/laravel-oauth2": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
