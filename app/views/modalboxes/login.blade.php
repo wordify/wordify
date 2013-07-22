@@ -5,4 +5,6 @@
 		{{ Form::password('password', array('class' => 'loginPassword')) }}
 		{{ Form::submit('Login', array('class' => 'modalSubmitBtn')) }}
 	{{ Form::close(); }}
+	OR
+	<a href="/login/facebook">LOGIN WITH FACEBOOK</a>
 </div>
