@@ -52,13 +52,20 @@ class UsersController extends BaseController {
         $validation = Validator::make($new_user, $rules);
 
         if($validation->fails()) {
-            return Redirect::to('users/create')
+            return Redirect::to('/')
                     ->withErrors($validation)->withInput();
         }
 
         $user = User::create($new_user);
 
-        return $user;
+        $credentials = array(
+            'username' => Input::get('username'),
+            'password' => Input::get('password')    
+        );
+
+        Auth::attempt($credentials);
+
+        return Redirect::to('/');
     }
 
     /**
