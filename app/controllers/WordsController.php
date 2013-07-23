@@ -9,9 +9,15 @@ class WordsController extends BaseController {
      */
     public function index()
     {
-        $words = Word::take(100)->orderBy('created_at', 'desc')->get();
+        $words = Word::take(100)->where('id', '>', Input::get('wordid'))->orderBy('created_at', 'desc')->get();
 
-        return $words;
+        $theView = View::make('words.index', ['words' => $words])->render();
+
+
+
+        $theView .= '<script> $(".lastWordId").removeClass($(".lastWordId").attr("class").split(" ")[1]).addClass("'.$words[0]->id.'");</script>';
+
+        return $theView;
     }
 
     /**
