@@ -4,6 +4,7 @@
 		<title>Wordify - Make your words become real!</title>
 		<!-- CSS files -->
 		{{ HTML::style('css/home.css'); }}
+		{{ HTML::style('css/modal.css'); }}
 	</head>
 	<body>
 		<div class="loggedInUserId 
