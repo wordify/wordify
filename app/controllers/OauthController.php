@@ -37,24 +37,36 @@ class OauthController extends BaseController {
             // Get the user details
             $user = $provider->get_user_info($token);
 
+            // Checks if email is already taken
+            $usercheck = User::where('provider_id', '=', null)->where('email', '=', $user['email'])->first();
+            if($usercheck) return "Email is already taken";
 
-            $usercheck = User::where('email', '=', $user['email'])
-                ->orWhere('username', '=', $user['nickname'])->first();
+            // Checks if the username is already taken
+            $usercheck = User::where('provider_id', '=', null)->where('username', '=', $user['nickname'])->first();
+            if($usercheck) return "Username is already taken";
 
             // Check if the user is registered in the DB
+            $usercheck = User::where('provider_id', '=', $user['uid'])->first();
             if(is_null($usercheck)) {
 
                 $profilePicture = 'https://graph.facebook.com/'.$user['uid'].'/picture?width=400&height=400';
-                $userDetails  = array(
-                    'username' => $user['nickname'],
-                    'password' => Hash::make(rand(1, 10000000)),
-                    'name' => $user['name'],
-                    'email' => $user['email'],
-                    'profilePicture' => $profilePicture
-                );
 
-                // Create user
-                User::create($userDetails);
+                $userObj = new User();
+                $userObj->username = $user['nickname'];
+                $userObj->password = Hash::make(rand(1, 10000000));
+                $userObj->name = $user['name'];
+                $userObj->email = $user['email'];
+                $userObj->profilePicture = $profilePicture;
+                $userObj->provider_id = $user['uid'];
+
+                // Save user
+                $userObj->save();
+
+                // Get newly created user
+                $user = User::where('username', '=', $user['email'])->orWhere('username', '=', $user['nickname'])->first();
+
+                Auth::login($user);
+                return Redirect::to('/');
             } else {
                 $user = User::where('username', '=', $user['email'])->orWhere('username', '=', $user['nickname'])->first();
 
