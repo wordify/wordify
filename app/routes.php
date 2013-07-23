@@ -39,6 +39,9 @@ Route::get('logout', 'UsersController@logout');
 //Route::post('postWord', 'WordsController@store');
 
 
+// Get new words
+Route::post('getNewWords', 'WordsController@index');
+
 // Resources
 Route::resource('users', 'UsersController');
 Route::resource('words', 'WordsController');

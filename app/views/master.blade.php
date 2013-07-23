@@ -6,14 +6,17 @@
 		{{ HTML::style('css/home.css'); }}
 	</head>
 	<body>
-		<div class="loggedInUserId 
-			@if(Auth::check())
-				{{ Auth::user()->id }}
-			@endif
-			">
+
+		<!--  -->
+		<div class="loggedInUserId @if(Auth::check()){{ Auth::user()->id}} @endif">
 		</div>
 
-				<!-- Modal box -->
+		<!-- Word, comment and notification trackers -->
+		<div class="lastWordId 0"></div>
+		<div class="lastCommentId 0"></div>
+		<div class="lastNotificationId 0"></div>
+
+		<!-- Modal box -->
 		<div class="modal_container">
 				@include('modalboxes.login')
 				@include('modalboxes.register')

@@ -2,8 +2,6 @@ $(document).ready(function() {
 
 	var focusElementID = false;
 	var focusElementCom = null;
-	var wordMaxId = 0;
-	var commentMaxId = 0;
 
 	$(".input").focus(function() {
 		if (!focusElementID && this.id != "searchText")

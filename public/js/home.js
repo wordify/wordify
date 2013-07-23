@@ -18,13 +18,27 @@ $(document).ready(function() {
 });
 
 var timer = null;
+var wordMaxId = 0;
+var lastWordId = 0;
+
+startRefresh();
 
 // Loads words, guesses and notifications
 function startRefresh() {
     timer = setTimeout(startRefresh,4000);
+
+	$.post("/getNewWords", { wordid: ""+$('.lastWordId').attr('class').split(' ')[1]+"" })
+		.done(function(data) {
+			$("#words").prepend(data);
+			$(".wordBlock").fadeIn('slow');
+			lastWordId = $('.lastWordId').attr('class').split(' ')[1];
+			console.log(lastWordId);
+		});
+
     /**$.get('http://wordify.me/application/posts/getwords.php?id='+wordMaxId+'&commentid='+commentMaxId+'<?php if (is_object($printUser)) { echo "&userid=".$printUser->getId(); } ?>', function(data) {
     	$("#words").prepend(data);
-    	$(".wordBlock").fadeIn('slow');
+    	$(".wordBlock").fadeIn('sl
+    	ow');
     	commentMaxId = $('.maxCommentID').text();
     	wordMaxId = $('.wordBlock').first().attr("id");
     	//alert(data);
