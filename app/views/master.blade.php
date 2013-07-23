@@ -6,7 +6,12 @@
 		{{ HTML::style('css/home.css'); }}
 	</head>
 	<body>
-		<div class="loggedInUserId {{ Auth::user()->id }}"></div>
+		<div class="loggedInUserId 
+			@if(Auth::check())
+				{{ Auth::user()->id }}
+			@endif
+			">
+		</div>
 
 				<!-- Modal box -->
 		<div class="modal_container">
