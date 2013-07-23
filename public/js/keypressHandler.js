@@ -26,18 +26,15 @@ $(document).ready(function() {
 
 		if (focusElementID && e.keyCode == 13) {
 			
-			
 			clearTimeout(timer);
+
 			var getWord = $(".input").val();
 
 			var userId = $('.loggedInUserId').attr('class').split(' ')[1];
-
-			//alert(getWord);
 			
 			$.post("/words", { word: ""+getWord+"", userid: userId, topicid: "0"/**+$('select[name="selectTopic"]').val()*/ })
 			.done(function(data) {
 				$(".input").val("");
-				alert(data);
 				startRefresh();
 			});
 
