@@ -9,7 +9,7 @@ class WordsController extends BaseController {
      */
     public function index()
     {
-        $words = Word::all();
+        $words = Word::take(100)->orderBy('created_at', 'desc')->get();
 
         return $words;
     }

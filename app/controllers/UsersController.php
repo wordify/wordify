@@ -72,7 +72,7 @@ class UsersController extends BaseController {
         );
 
         Auth::attempt($credentials);
-        
+
         return Redirect::to('/');
     }
 

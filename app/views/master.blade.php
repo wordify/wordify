@@ -6,6 +6,8 @@
 		{{ HTML::style('css/home.css'); }}
 	</head>
 	<body>
+		<div class="loggedInUserId {{ Auth::user()->id }}"></div>
+
 				<!-- Modal box -->
 		<div class="modal_container">
 				@include('modalboxes.login')
