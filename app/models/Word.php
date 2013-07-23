@@ -1,7 +1,7 @@
 <?php
 
 class Word extends Eloquent {
-    protected $fillable = array('word', 'topic_id', 'user_id');
+    //protected $fillable = array('word', 'topic_id', 'user_id');
 
     public static $rules = array();
 

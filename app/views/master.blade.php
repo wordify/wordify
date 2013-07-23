@@ -38,7 +38,8 @@
 
 		<!-- Js files -->
 		{{ HTML::script("js/jquery.js"); }}
-		{{ HTML::script("js/home.js");}}
+		{{ HTML::script("js/home.js"); }}
+		{{ HTML::script("js/keypressHandler.js"); }}
 </html>
 
 	

@@ -33,7 +33,19 @@ class WordsController extends BaseController {
      */
     public function store()
     {
+        /**$new_word = array(
 
+        );*/
+
+        $word = new Word();
+
+        $word->word = Input::get('word');
+        $word->topic_id = Input::get('topicid');
+        $word->user_id = Input::get('userid');
+
+        $word->save();
+
+        return Input::get('word').' '.Input::get('userid').' '.Input::get('topicid');
     }
 
     /**
