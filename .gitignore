@@ -3,3 +3,6 @@
 composer.phar
 composer.lock
 .DS_Store
+
+// except these files
+!/vendor/taylorotwell/laravel-oauth2/src/OAuth2/Provider/Facebook.php
