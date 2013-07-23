@@ -5,7 +5,7 @@
 	"require": {
 		"laravel/framework": "4.0.*",
 		"way/generators": "dev-master",
-		"taylorotwell/laravel-oauth2": "dev-master"
+		"kyllesdk/laravel-oauth2-updated": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
