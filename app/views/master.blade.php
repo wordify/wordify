@@ -24,6 +24,7 @@
 				@if(Auth::check())
 					<li><a href="{{ URL::to('logout') }}">Log out</a></li>
 				@else
+					<img src="/images/logo/Wordify-logo_50px.png" id="logo"/>
 					<li id="loginButton"><a href='#'>Login</a></li>
 					<li id="createUserButton"><a href='#'>Register</a></li>
 				@endif
