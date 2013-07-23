@@ -1,0 +1,90 @@
+
+#modalTitle {
+	font-size: 80px;
+	color:  #757474;
+	line-height: 90px;
+}
+
+
+.lab {
+	font-size: 32px;
+	padding-left: 20px;
+}
+ 
+.modalORText {
+	font-size: 36px; 
+	padding: 0px 20px 0 20px; 
+	display: block; 
+	line-height:46px; 
+	float:left;
+}
+
+.modalButtonContainer {
+	width:80%; 
+	margin: 30px 0 20px 0; 
+	overflow: auto; 
+	margin-right: auto; 
+	margin-left: auto;
+}
+
+.modalSubmitBtn{
+	font-family: Arial;
+	font-size: 20px;
+	border: 1px solid #c5c5c5;
+	color: #757474;
+	margin: 10px;
+	margin-top: 0px;
+	padding: 10px 20px 10px 20px;
+	background: #d5d5d5;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#d5d5d5), to(#c5c5c5));
+	background: -moz-linear-gradient(top, #d5d5d5, #c5c5c5);
+	float:left;
+}
+
+.modalSubmitBtn:hover {
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#c5c5c5), to(#d5d5d5));
+	background: -moz-linear-gradient(top, #c5c5c5, #d5d5d5);
+}
+
+.modalLoginInputField {
+	border: 0;
+	width: 80%;
+	border-bottom: 1px solid #000;
+	margin-bottom: 20px;
+	font-size: 55px;
+	text-align: left;
+	background-color: #eae6e6;
+	padding: 0 0 5px 0;
+	margin-top: 10px;
+	text-transform:uppercase;
+}
+
+
+.joinText {
+	padding-top: 40px;
+	display: block;
+	border: 0px solid #000;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+.createUserTable {
+	width: 80%;
+	border: 1px solid #000;
+}
+
+.modalCreateInputField {
+	border: 0;
+	width: 80%;
+	border-bottom: 1px solid #000;
+	margin-bottom: 20px;
+	font-size: 40px;
+	text-align: left;
+	background-color: #eae6e6;
+	padding: 0 0 5px 0;
+	margin-top: 10px;
+	text-transform: uppercase;
+}

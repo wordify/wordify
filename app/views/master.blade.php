@@ -4,6 +4,7 @@
 		<title>Wordify - Make your words become real!</title>
 		<!-- CSS files -->
 		{{ HTML::style('css/home.css'); }}
+		{{ HTML::style('css/modal.css'); }}
 	</head>
 	<body>
 
@@ -26,8 +27,8 @@
 				@if(Auth::check())
 					<li><a href="{{ URL::to('logout') }}">Log out</a></li>
 				@else
-					<li><a href='#' id='loginButton'>Login</a></li>
-					<li><a href='#' id='createUserButton'>Register</a></li>
+					<li id="loginButton"><a href='#'>Login</a></li>
+					<li id="createUserButton"><a href='#'>Register</a></li>
 				@endif
 			</ul>
 		</nav>
