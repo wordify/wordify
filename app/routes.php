@@ -14,9 +14,7 @@
 Route::get('/', 'HomeController@index');
 
 
-// USE TO CALL A METHOD IN A CONTROLLER
-//Route::get('/', 'UsersController@index');
-
+// User routes
 Route::get('user/{id}', function($id)
 {
     return View::make('users.show')->with('userId', $id);
@@ -27,18 +25,16 @@ Route::get('users/create', function()
 	return View::make('users.create');
 });
 
+Route::post('login', 'UsersController@login');
+Route::get('logout', 'UsersController@logout');
+Route::post('/users/', array('before' => 'csrf', 'uses' => 'UsersController@store'));
+Route::post('/getProfile', 'UsersController@getProfile');
+
 // Login
 Route::get('login/{provider}', 'OauthController@index');
 
-Route::post('login', 'UsersController@login');
-Route::get('logout', 'UsersController@logout');
-
 // Post word
 //Route::post('postWord', 'WordsController@store');
-
-
-//Secure post to user
-Route::post('/users/', array('before' => 'csrf', 'uses' => 'UsersController@store'));
 
 // Get new words
 Route::post('getNewWords', 'WordsController@index');
