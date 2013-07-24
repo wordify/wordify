@@ -12,7 +12,7 @@ class CreateFollowTable extends Migration {
      */
     public function up()
     {
-        Schema::create('follow', function(Blueprint $table) {
+        Schema::create('follows', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('useridfollowed');
 			$table->integer('useridfollower');

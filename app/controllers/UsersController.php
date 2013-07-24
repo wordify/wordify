@@ -148,13 +148,28 @@ class UsersController extends BaseController {
     **/
     public function getProfile() {
         $user = User::find(Input::get('userId'))->first();
+        $followers = $this->getFollowers(Input::get('userId'));
+        $following = $this->getFollowing(Input::get('userId'));
+
         if(is_null($user)) {
             $theView = View::make('users.profile', ['user' => false])->render();
         } else {
-            $theView = View::make('users.profile', ['user' => $user])->render();
+            $theView = View::make('users.profile', ['user' => $user, 'followers' => $followers, 'following' => $following])->render();
         }
         
         return $theView;
+    }
+
+    public function getFollowers($userId) {
+        $followers = Follow::where('useridfollowed', '=', $userId)->count();
+
+        return $followers;
+    }
+
+    public function getFollowing($userId) {
+        $following = Follow::where('useridfollower', '=', $userId)->count();
+
+        return $following;
     }
 
     /**
