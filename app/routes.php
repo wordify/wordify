@@ -37,6 +37,9 @@ Route::get('logout', 'UsersController@logout');
 //Route::post('postWord', 'WordsController@store');
 
 
+//Secure post to user
+Route::post('/users/', array('before' => 'csrf', 'uses' => 'UsersController@store'));
+
 // Get new words
 Route::post('getNewWords', 'WordsController@index');
 
