@@ -150,11 +150,20 @@ class UsersController extends BaseController {
         $user = User::find(Input::get('userId'))->first();
         $followers = $this->getFollowers(Input::get('userId'));
         $following = $this->getFollowing(Input::get('userId'));
+        $words = $this->getLastTenWords(Input::get('userId'));
+        
+        // Making the print order shuffled
+        $wordarray = array();
+        foreach ($words as $w) {
+            $wordarray[] = $w;
+        }
+        shuffle($wordarray);
 
+        $commentCount = $this->getLastTenWordsTotalCommentCount(Input::get('userId'));
         if(is_null($user)) {
             $theView = View::make('users.profile', ['user' => false])->render();
         } else {
-            $theView = View::make('users.profile', ['user' => $user, 'followers' => $followers, 'following' => $following])->render();
+            $theView = View::make('users.profile', ['user' => $user, 'followers' => $followers, 'following' => $following, 'words' => $wordarray, 'totalCount' => $commentCount])->render();
         }
         
         return $theView;
@@ -203,6 +212,16 @@ class UsersController extends BaseController {
         $words = User::find($id)->words()->orderBy('id', 'desc')->take(10)->get();
 
         return $words;
+    }
+
+    public function getLastTenWordsTotalCommentCount($id) {
+        $words = User::find($id)->words()->orderBy('id', 'desc')->take(10)->get();
+        $totalcount = 0;
+        foreach($words as $w) {
+            $totalcount = $totalcount + $w->comments()->count();
+        }
+
+        return $totalcount;
     }
 
 }
