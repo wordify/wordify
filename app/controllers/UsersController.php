@@ -142,6 +142,22 @@ class UsersController extends BaseController {
     }
 
     /**
+    * Get the profile view of the userid 
+    *
+    * @return profile view
+    **/
+    public function getProfile() {
+        $user = User::find(Input::get('userId'))->first();
+        if(is_null($user)) {
+            $theView = View::make('users.profile', ['user' => false])->render();
+        } else {
+            $theView = View::make('users.profile', ['user' => $user])->render();
+        }
+        
+        return $theView;
+    }
+
+    /**
     * Get users words
     * @param userid
     * @return words
