@@ -42,6 +42,29 @@
                 <input type="text" name="new_topic" id="create_new_topic" placeholder="WRITE TOPIC" />
             @endif
         <div id="profileWordsDivHeadline">Word cloud</div>
-              <b>This user has not posted any words yet!</b>
+        @if(!is_null($words))
+
+            @foreach ($words as $w)
+                {{--*/$commentcount = $w->comments()->count();/*--}}
+                @if($commentcount < 1) {{--*/$commentcount = 1;/*--}} @endif
+                @if (($commentcount/$totalCount)*100 < 10)
+                    <span class="tagcloud tagcloud-word1 {{ $w->id }}">{{ $w->word }} </span>
+                @elseif (($commentcount/$totalCount)*100 < 20)
+                    <span class="tagcloud tagcloud-word2 {{ $w->id }}">{{ $w->word }}</span>
+
+                @elseif (($commentcount/$totalCount)*100 < 40)
+                    <span class="tagcloud tagcloud-word3 {{ $w->id }}">{{ $w->word }}</span>
+                @elseif (($commentcount/$totalCount)*100 < 60)
+                    <span class="tagcloud tagcloud-word4 {{ $w->id }}">{{ $w->word }}</span>
+                @elseif (($commentcount/$totalCount)*100 < 80)
+                    <span class="tagcloud tagcloud-word5 {{ $w->id }}">{{ $w->word }}</span>
+
+                @else
+                    <span class="tagcloud tagcloud-word6 {{ $w->id }}">{{ $w->word }}</span>
+                @endif
+            @endforeach
+        @else
+            <b>This user has not posted any words yet!</b>
+        @endif    
     </div>
 @endif
