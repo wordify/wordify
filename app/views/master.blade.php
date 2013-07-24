@@ -11,7 +11,7 @@
 		@foreach($errors->all() as $error)
 			</i><b>{{ $error }}<br /></b></i>
 		@endforeach
-
+		<div id="profileBox"></div>
 		<!--  -->
 		<div class="loggedInUserId @if(Auth::check()){{ Auth::user()->id}} @endif">
 		</div>
