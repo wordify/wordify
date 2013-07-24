@@ -44,16 +44,16 @@ class UsersController extends BaseController {
         );
 
         $rules = array(
-            'username' => 'required|min:3|max:80',
+            'username' => 'required|min:3|max:80|alpha|unique:users',
             'password' => 'required|min:6',
-            'email' => 'required|email'
+            'email' => 'required|email|unique:users'
         );
 
         $validation = Validator::make($new_user, $rules);
 
         if($validation->fails()) {
-            return Redirect::to('/')
-                    ->withErrors($validation)->withInput();
+            return Redirect::to('/')->withErrors($validation);
+
         }
 
         $user = User::create($new_user);
