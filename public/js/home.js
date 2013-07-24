@@ -17,6 +17,21 @@ $(document).ready(function() {
     });
 });
 
+// Username clicked
+$(document).on('click','.username', function(e) {
+    var userId = $(this).attr('class').split(' ')[1];
+    
+    $.post("/getProfile", {
+        userId: userId
+    }).done(function(data){
+        $('#profileBox').html(data);
+    });
+
+    $('#profileBox').animate({ width: 'show' });
+})
+
+
+
 var timer = null;
 var wordMaxId = 0;
 var lastWordId = 0;
