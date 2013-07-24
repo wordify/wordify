@@ -20,4 +20,12 @@ class Word extends Eloquent {
     public function topic() {
     	return $this->belongsTo('Topic');
     }
+
+    /**
+    * Words have many comments
+    * @return comment
+    **/
+    public function comments() {
+        return $this->hasMany('Comment');
+    }
 }
