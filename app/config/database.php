@@ -56,7 +56,7 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => 'tunnel.pagodabox.com:3306',
 			'database'  => 'abigail',
-			'username'  => 'root',
+			'username'  => 'muriel',
 			'password'  => 'VeAZfU7d',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
