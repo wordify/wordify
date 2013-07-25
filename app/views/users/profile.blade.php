@@ -14,25 +14,28 @@
         <div class="profileFacts">
             <h2>@{{ $user->username }}</h2>
 
-            @if(!Auth::check())
+            @if(Auth::check())
                 <div id="followButtonContainer">
                         @if(Auth::user()->id != $user->id)
-                                <a href="#" id="profileFollowBtn" class="unFollowButton {{ $user->id }}">Unfollow</a>
+                            @if($followstatus)
+                                <a href="#" id="profileFollowBtn" class="unFollowButton {{ $user->id }}">Unfollow</a>
+                            @else
+                                <a href="#" id="profileFollowBtn" class="followButton {{ $user->id }}">Follow</a>
+                            @endif
                         @else
-                            <a href="#" id="profileFollowBtn" class="editProfileButton {{$user->id }}">Edit profile</a>
+                            <a href="#" id="profileFollowBtn" class="editProfileButton {{ $user->id }}">Edit profile</a>
                         @endif
                 </div>
             @endif
 
-            @if(!is_null($user->country) && !is_null($user->website) && !is_null($user->job))
                 <a href="#" class="profileFollowedNumber {{ $user->id }} profileStatusBarNumber">{{ $following }}</a> Following<br/>
                 <a href="#" class="profileFollowersNumber profileStatusBarNumber">{{ $followers }}</a> Followers<br/><br/>
-
+            @unless(is_null($user->country) && is_null($user->website) && is_null($user->job))
                 @unless(is_null($user->country)) Is from  {{ $user->country }}<br/> @endunless
                 @unless(is_null($user->website)) <a href="{{ $user->website }}" target="_BLANK">Homepage link</a><br/>@endunless
                 @unless(is_null($user->job)) Job: {{ $user->job }}<br/>@endunless
             @else {{ $user->username }} is new here. No information is added yet.
-            @endif
+            @endunless
         </div>
     </div>
 
@@ -47,20 +50,22 @@
             @foreach ($words as $w)
                 {{--*/$commentcount = $w->comments()->count();/*--}}
                 @if($commentcount < 1) {{--*/$commentcount = 1;/*--}} @endif
-                @if (($commentcount/$totalCount)*100 < 10)
-                    <span class="tagcloud tagcloud-word1 {{ $w->id }}">{{ $w->word }} </span>
-                @elseif (($commentcount/$totalCount)*100 < 20)
-                    <span class="tagcloud tagcloud-word2 {{ $w->id }}">{{ $w->word }}</span>
+                @if($totalCount != 0)
+                    @if (($commentcount/$totalCount)*100 < 10)
+                        <span class="tagcloud tagcloud-word1 {{ $w->id }}">{{ $w->word }} </span>
+                    @elseif (($commentcount/$totalCount)*100 < 20)
+                        <span class="tagcloud tagcloud-word2 {{ $w->id }}">{{ $w->word }}</span>
 
-                @elseif (($commentcount/$totalCount)*100 < 40)
-                    <span class="tagcloud tagcloud-word3 {{ $w->id }}">{{ $w->word }}</span>
-                @elseif (($commentcount/$totalCount)*100 < 60)
-                    <span class="tagcloud tagcloud-word4 {{ $w->id }}">{{ $w->word }}</span>
-                @elseif (($commentcount/$totalCount)*100 < 80)
-                    <span class="tagcloud tagcloud-word5 {{ $w->id }}">{{ $w->word }}</span>
+                    @elseif (($commentcount/$totalCount)*100 < 40)
+                        <span class="tagcloud tagcloud-word3 {{ $w->id }}">{{ $w->word }}</span>
+                    @elseif (($commentcount/$totalCount)*100 < 60)
+                        <span class="tagcloud tagcloud-word4 {{ $w->id }}">{{ $w->word }}</span>
+                    @elseif (($commentcount/$totalCount)*100 < 80)
+                        <span class="tagcloud tagcloud-word5 {{ $w->id }}">{{ $w->word }}</span>
 
-                @else
-                    <span class="tagcloud tagcloud-word6 {{ $w->id }}">{{ $w->word }}</span>
+                    @else
+                        <span class="tagcloud tagcloud-word6 {{ $w->id }}">{{ $w->word }}</span>
+                    @endif
                 @endif
             @endforeach
         @else
