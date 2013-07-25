@@ -147,10 +147,14 @@ class UsersController extends BaseController {
     * @return profile view
     **/
     public function getProfile() {
-        $user = User::find(Input::get('userId'))->first();
+        $user = User::find(Input::get('userId'));
         $followers = $this->getFollowers(Input::get('userId'));
         $following = $this->getFollowing(Input::get('userId'));
         $words = $this->getLastTenWords(Input::get('userId'));
+
+        //Checks if the user follows the clicked user
+        $follow = new FollowsController();
+        $followstatus = $follow->checkIfFollowing(Auth::user()->id, Input::get('userId'));
         
         // Making the print order shuffled
         $wordarray = array();
@@ -163,7 +167,9 @@ class UsersController extends BaseController {
         if(is_null($user)) {
             $theView = View::make('users.profile', ['user' => false])->render();
         } else {
-            $theView = View::make('users.profile', ['user' => $user, 'followers' => $followers, 'following' => $following, 'words' => $wordarray, 'totalCount' => $commentCount])->render();
+            $theView = View::make('users.profile', 
+                ['user' => $user, 'followers' => $followers, 'following' => $following, 'words' => $wordarray, 'totalCount' => $commentCount, 'followstatus' => $followstatus])
+                ->render();
         }
         
         return $theView;
