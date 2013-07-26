@@ -23,8 +23,10 @@ $(document).ready(function() {
 		var theKey = e.which;
 
 		if (focusElementID && e.keyCode == 13) {
+
+			longpending.abort();
 			
-			clearTimeout(timer);
+			//clearTimeout(timer);
 
 			var getWord = $(".input").val();
 

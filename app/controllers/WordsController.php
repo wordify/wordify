@@ -9,15 +9,79 @@ class WordsController extends BaseController {
      */
     public function index()
     {
-        $words = Word::take(100)->where('id', '>', Input::get('wordid'))->orderBy('created_at', 'desc')->get();
+        /**ob_implicit_flush(true);
+        $time = time();
 
-        $theView = View::make('words.index', ['words' => $words])->render();
+        $wordid = Input::get('wordid');
+
+        session_write_close();
+        set_time_limit(0);
+
+        while((time() - $time) < 15) {
+
+            $words = Word::take(100)->where('id', '>', $wordid)->orderBy('created_at', 'desc')->get();
+
+            if (!$words->isEmpty()) {
+
+                $theView = View::make('words.index', ['words' => $words])->render();
+
+                $theView .= '<script> $(".lastWordId").removeClass($(".lastWordId").attr("class").split(" ")[1]).addClass("'.$words[0]->id.'");</script>';
+
+                echo $theView;
+
+                break;
+                //return $theView;
+
+            } else {
+                echo 'something<br/>';
+                flush();
+                sleep(1);
+                clearstatcache();
+            }
+
+        }*/
+
+    }
+
+    public function longPolling()
+    {
+        $time = time();
+
+        $wordid = Input::get('wordid');
+
+        session_write_close();
+
+        //set_time_limit(0);
+
+        while((time() - $time) < 25) {
+
+            $words = Word::take(100)->where('id', '>', $wordid)->orderBy('created_at', 'desc')->get();
+
+            if (!$words->isEmpty()) {
 
 
+                //die($words);
 
-        $theView .= '<script> $(".lastWordId").removeClass($(".lastWordId").attr("class").split(" ")[1]).addClass("'.$words[0]->id.'");</script>';
 
-        return $theView;
+                if (is_object($words[0])) {
+
+                    $theView = View::make('words.index', array('words' => $words))->render();
+
+                    $theView .= '<script> $(".lastWordId").removeClass($(".lastWordId").attr("class").split(" ")[1]).addClass("'.$words[0]->id.'");</script>';
+
+                }
+
+                return $theView;
+                
+
+            } else {
+
+                sleep(2);
+
+            }
+
+        }
+
     }
 
     /**
@@ -39,9 +103,6 @@ class WordsController extends BaseController {
      */
     public function store()
     {
-        /**$new_word = array(
-
-        );*/
 
         $word = new Word();
 

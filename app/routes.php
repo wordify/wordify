@@ -38,7 +38,8 @@ Route::get('logout', 'UsersController@logout');
 
 
 // Get new words
-Route::post('getNewWords', 'WordsController@index');
+Route::post('getNewWords', 'WordsController@longPolling');
+Route::get('getNewWords', 'WordsController@longPolling');
 
 // Resources
 Route::resource('users', 'UsersController');
