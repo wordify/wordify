@@ -17,6 +17,7 @@ $(document).ready(function() {
     });
 });
 
+
 var longpending = null;
 
 // Loads words, guesses and notifications

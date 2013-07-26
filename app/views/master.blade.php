@@ -7,7 +7,11 @@
 		{{ HTML::style('css/modal.css'); }}
 	</head>
 	<body>
-
+		<!-- Display errors that might occur -->
+		@foreach($errors->all() as $error)
+			</i><b>{{ $error }}<br /></b></i>
+		@endforeach
+		@if(Auth::check()) <div id="profileBox"></div> @endif
 		<!--  -->
 		<div class="loggedInUserId @if(Auth::check()){{ Auth::user()->id}} @endif">
 		</div>

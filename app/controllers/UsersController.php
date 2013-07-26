@@ -44,16 +44,16 @@ class UsersController extends BaseController {
         );
 
         $rules = array(
-            'username' => 'required|min:3|max:80',
+            'username' => 'required|min:3|max:80|alpha|unique:users',
             'password' => 'required|min:6',
-            'email' => 'required|email'
+            'email' => 'required|email|unique:users'
         );
 
         $validation = Validator::make($new_user, $rules);
 
         if($validation->fails()) {
-            return Redirect::to('/')
-                    ->withErrors($validation)->withInput();
+            return Redirect::to('/')->withErrors($validation);
+
         }
 
         $user = User::create($new_user);
@@ -142,6 +142,52 @@ class UsersController extends BaseController {
     }
 
     /**
+    * Get the profile view of the userid 
+    *
+    * @return profile view
+    **/
+    public function getProfile() {
+        $user = User::find(Input::get('userId'));
+        $followers = $this->getFollowers(Input::get('userId'));
+        $following = $this->getFollowing(Input::get('userId'));
+        $words = $this->getLastTenWords(Input::get('userId'));
+
+        //Checks if the user follows the clicked user
+        $follow = new FollowsController();
+        $followstatus = $follow->checkIfFollowing(Auth::user()->id, Input::get('userId'));
+        
+        // Making the print order shuffled
+        $wordarray = array();
+        foreach ($words as $w) {
+            $wordarray[] = $w;
+        }
+        shuffle($wordarray);
+
+        $commentCount = $this->getLastTenWordsTotalCommentCount(Input::get('userId'));
+        if(is_null($user)) {
+            $theView = View::make('users.profile', ['user' => false])->render();
+        } else {
+            $theView = View::make('users.profile', 
+                ['user' => $user, 'followers' => $followers, 'following' => $following, 'words' => $wordarray, 'totalCount' => $commentCount, 'followstatus' => $followstatus])
+                ->render();
+        }
+        
+        return $theView;
+    }
+
+    public function getFollowers($userId) {
+        $followers = Follow::where('useridfollowed', '=', $userId)->count();
+
+        return $followers;
+    }
+
+    public function getFollowing($userId) {
+        $following = Follow::where('useridfollower', '=', $userId)->count();
+
+        return $following;
+    }
+
+    /**
     * Get users words
     * @param userid
     * @return words
@@ -172,6 +218,16 @@ class UsersController extends BaseController {
         $words = User::find($id)->words()->orderBy('id', 'desc')->take(10)->get();
 
         return $words;
+    }
+
+    public function getLastTenWordsTotalCommentCount($id) {
+        $words = User::find($id)->words()->orderBy('id', 'desc')->take(10)->get();
+        $totalcount = 0;
+        foreach($words as $w) {
+            $totalcount = $totalcount + $w->comments()->count();
+        }
+
+        return $totalcount;
     }
 
 }
