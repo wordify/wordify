@@ -29,6 +29,7 @@ Route::post('login', 'UsersController@login');
 Route::get('logout', 'UsersController@logout');
 Route::post('/users/', array('before' => 'csrf', 'uses' => 'UsersController@store'));
 Route::post('/getProfile', 'UsersController@getProfile');
+Route::post('/user/following', 'UsersController@getFollowing');
 
 // Login
 Route::get('login/{provider}', 'OauthController@index');

@@ -15,7 +15,21 @@ $(function() {
     $('#createUserButton').on('click', function() {
     	openModal('registerModal');
     });
+
+    // Followed number clicked
+	$(document).on('click', '.profileFollowedNumber', function() {	
+		var userId = $('#profileBox').attr('class');
+		
+		$.post('/user/following', {
+			userId: userId
+		}).done(function(data) {
+			openModal('followedModal');
+			$('.followedModal').find('.modalContent').append(data);
+		});
+	});
+
 });
+
 
 $(document).on('click','.username', function(e) {
 	var userId = $(this).attr('class').split(' ')[1];   
@@ -23,6 +37,7 @@ $(document).on('click','.username', function(e) {
 		userId: userId
 	}).done(function(data){
 		$('#profileBox').html(data);
+		$('#profileBox').addClass(userId);
 	});
 	$('#profileBox').animate({ width: 'show' });
 });
