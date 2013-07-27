@@ -148,8 +148,8 @@ class UsersController extends BaseController {
     **/
     public function getProfile() {
         $user = User::find(Input::get('userId'));
-        $followers = $this->getFollowers(Input::get('userId'));
-        $following = $this->getFollowing(Input::get('userId'));
+        $followers = $this->getFollowersCount(Input::get('userId'));
+        $following = $this->getFollowingCount(Input::get('userId'));
         $words = $this->getLastTenWords(Input::get('userId'));
 
         //Checks if the user follows the clicked user
@@ -175,13 +175,13 @@ class UsersController extends BaseController {
         return $theView;
     }
 
-    public function getFollowers($userId) {
+    public function getFollowersCount($userId) {
         $followers = Follow::where('useridfollowed', '=', $userId)->count();
 
         return $followers;
     }
 
-    public function getFollowing($userId) {
+    public function getFollowingCount($userId) {
         $following = Follow::where('useridfollower', '=', $userId)->count();
 
         return $following;
