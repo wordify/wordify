@@ -187,6 +187,50 @@ class UsersController extends BaseController {
         return $following;
     }
 
+
+    /**
+    * Gets the users that the user is following
+    * @param int userId
+    * @return arrayOfObjects users
+    **/
+    public function getFollowing() {
+        $following = Follow::where('useridfollower', '=', Input::get('userId'))->select('useridfollowed')->get();
+
+        if(!is_null($following->first())) {
+
+            // get all the userid's
+            $userIds = array();
+            foreach ($following as $f) {
+                $userIds[] = $f->useridfollowed;
+            }
+
+            // Get all the followed users
+            $users = User::whereIn('id', $userIds)->select('id', 'username', 'name', 'profilePicture')->get();
+            foreach ($users as $u) {
+            echo '<div class="username '.$u->id.' followList">
+                    <img src="'.$u->profilePicture.'" 
+                        alt="Profile picture" class="followListProfilePicture">
+                    <span class="followUsername" id="'.$u->id.'">'.(is_null($u->name) ? 
+                        '<span class="followListUsername">'.$u->username.'</span>' : 
+                        '<span class="followListUsername">'.$u->username.'</span><span class="followListName">
+                            '.$u->name.'</span></span></div>');
+            }
+        } else {
+            echo '<h3>The user is not following anyone yet!';
+        }
+    }
+
+    /**
+    * Gets the users that the user is being followed by
+    * @param int userId
+    * @return arrayOfObjects users
+    **/
+    public function getFollowers($userId) {
+        $followers = Follow::where('useridfollowed', '=', $userId)->get();
+
+        return $followers;
+    }
+
     /**
     * Get users words
     * @param userid
