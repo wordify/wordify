@@ -20,6 +20,12 @@
 	float:left;
 }
 
+.modalContent h3{
+	margin-right: auto;
+	margin-left: auto;
+	float: center;
+}
+
 .modalButtonContainer {
 	width:80%; 
 	margin: 30px 0 20px 0; 

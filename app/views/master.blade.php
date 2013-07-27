@@ -25,6 +25,7 @@
 		<div class="modal_container">
 				@include('modalboxes.login')
 				@include('modalboxes.register')
+				@include('modalboxes.followed')
 		</div>
 		<nav id="topNavigation">
 			<ul id="topBtnUL">
