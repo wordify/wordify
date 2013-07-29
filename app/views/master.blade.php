@@ -26,6 +26,7 @@
 				@include('modalboxes.login')
 				@include('modalboxes.register')
 				@include('modalboxes.followed')
+				@include('modalboxes.profilepicture');
 		</div>
 		<nav id="topNavigation">
 			<ul id="topBtnUL">
