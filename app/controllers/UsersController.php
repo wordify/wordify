@@ -148,7 +148,7 @@ class UsersController extends BaseController {
     **/
     public function getProfile() {
         
-        user = User::find(Input::get('userId'));
+        $user = User::find(Input::get('userId'));
         $followers = $this->getFollowersCount(Input::get('userId'));
         $following = $this->getFollowingCount(Input::get('userId'));
         $words = $this->getLastTenWords(Input::get('userId'));
