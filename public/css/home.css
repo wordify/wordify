@@ -94,7 +94,6 @@ select {
 	border: 0;
 	border-bottom: 1px solid #000;
 	font-size: 70px;
-	margin-top: 20px;
 	text-transform:uppercase;
 	background-color: #ededed;
 }
@@ -105,6 +104,7 @@ select {
 	width: 100%;
 	text-align: center;
 	text-transform:uppercase;
+	margin-top: 80px;
 }
 
 #words {
@@ -133,7 +133,6 @@ select {
 
 .feedUsername {
 	font-size: 40px;
-	padding-left: 20px;
 }
 
 .says {
@@ -147,7 +146,6 @@ select {
 	color: #252424;
 	font-size: 50px;
 	border: 0px solid #000;
-	margin-left: 20px;
 	display: inherit;
 }
 
@@ -160,9 +158,10 @@ select {
 }
 
 .writer {
-	width: 80%;
+	width: 70%;
 	border: 0px solid #000;
 	float: left;
+	padding-left: 20px;
 }
 
 .commentBlock {
@@ -733,7 +732,11 @@ select {
 }
 
 .point {
-	display:block; margin-right: 10px; float:left; margin-top: 4px;
+	display:block; 
+	margin-right: 10px; 
+	float:left; 
+	margin-top: 4px;
+	clear: left;
 }
 
 #relatedPeople {
@@ -805,7 +808,7 @@ select {
 
 .acommentBox {
 	float: left; 
-	width: 90%;
+	width: 80%;
 	border: 1px solid #CCCCCC;
 	margin-top: 2px;
 	margin-bottom: 2px;

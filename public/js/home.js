@@ -56,7 +56,7 @@ function startRefresh() {
 	longpending = $.ajax({
 		type: 'POST',
 		//url: '/getNewWords',
-		url: '/getNewWords',
+		url: '/getNewItems',
 		data: { wordid: ""+$('.lastWordId').attr('class').split(' ')[1]+"", commentid: ""+$('.lastCommentId').attr('class').split(' ')[1]+"" },
 		async: true,
 		cache: false
@@ -69,11 +69,11 @@ function startRefresh() {
 
 function startLoadWords() {
 
-	$.ajax({
+	longpending = $.ajax({
 		type: 'POST',
-		url: '/getNewWords',
+		url: '/getNewItems',
 		//url: '/test.php',
-		data: { wordid: ""+$('.lastWordId').attr('class').split(' ')[1]+"" },
+		data: { wordid: ""+$('.lastWordId').attr('class').split(' ')[1]+"", commentid: ""+$('.lastCommentId').attr('class').split(' ')[1]+"" },
 		async: true,
 		cache: false
 	}).done(function(data) {

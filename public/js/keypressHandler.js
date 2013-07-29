@@ -21,6 +21,7 @@ $(document).ready(function() {
 	$(document).keypress(function(e) {
 
 		var theKey = e.which;
+		var userId = $('.loggedInUserId').attr('class').split(' ')[1];
 
 		if (focusElementID && e.keyCode == 13) {
 
@@ -29,8 +30,6 @@ $(document).ready(function() {
 			//clearTimeout(timer);
 
 			var getWord = $(".input").val();
-
-			var userId = $('.loggedInUserId').attr('class').split(' ')[1];
 			
 			$.post("/words", { word: ""+getWord+"", userid: userId, topicid: "0"/**+$('select[name="selectTopic"]').val()*/ })
 			.done(function(data) {
@@ -50,19 +49,17 @@ $(document).ready(function() {
 		
 		} else if (e.keyCode == 13 && "writeComment" == $(':focus').attr("class")) {
 			
-			/**
-			clearTimeout(timer);
+			longpending.abort();
 
-			var wordUser = $(':focus').parent().parent().parent().find(".username").attr("class").split(' ')[1];
-			var wordid = $(':focus').parent().parent().parent().attr("id");
+			var wordUser = $(':focus').parent().parent().find(".username").attr("class").split(' ')[1];
+			var wordid = $(':focus').parents('.wordBlock').attr("id");
 
-			$.post("http://wordify.me/application/posts/postcomment.php", { comment: ""+$(':focus').val()+"", wordid: ""+wordid+"", userid: "<?php if (is_object($printUser)) { echo $printUser->getId(); } ?>", receiver: ""+wordUser+"" })
+			$.post("comments", { comment: ""+$(':focus').val()+"", wordid: ""+wordid+"", userid: userId, receiver: ""+wordUser+"" })
 			.done(function(data) {
 				$(':focus').val("");
 				//alert(data);
 				startRefresh();
 			});
-			*/
 			
 		} else if (e.keyCode == 13 && "create_new_topic" == $(':focus').attr("id")) {
 			

@@ -1,6 +1,6 @@
 <?php
 
-class Comments extends BaseController {
+class CommentsController extends BaseController {
 
     /**
      * Display a listing of the resource.
@@ -29,7 +29,17 @@ class Comments extends BaseController {
      */
     public function store()
     {
-        //
+        $comment = new Comment();
+
+        $comment->comment = Input::get('comment');
+        $comment->word_id = Input::get('wordid');
+        $comment->user_id = Input::get('userid');
+        $comment->point = 0;
+        //$comment->receiver = Input::get('receiver');
+
+        $comment->save();
+
+        return Input::get('comment').' '.Input::get('comment').' '.Input::get('userid');
     }
 
     /**

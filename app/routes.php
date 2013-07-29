@@ -34,8 +34,8 @@ Route::post('/user/follow/{follow1}', 'UsersController@getFollowers');
 // Login
 Route::get('login/{provider}', 'OauthController@index');
 
-// Get new words
-Route::post('getNewWords', 'LongPollingController@longPolling');
+// Get new items (long polling)
+Route::post('getNewItems', 'LongPollingController@longPolling');
 
 // Resources
 Route::resource('image', 'ImageController');
@@ -43,3 +43,4 @@ Route::resource('users', 'UsersController');
 Route::resource('words', 'WordsController');
 Route::resource('topics', 'TopicsController');
 Route::resource('home', 'HomeController');
+Route::resource('comments', 'CommentsController');

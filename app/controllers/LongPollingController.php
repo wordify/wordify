@@ -19,10 +19,7 @@ class LongPollingController extends BaseController {
             $words = Word::take(100)->where('id', '>', $wordid)->orderBy('id', 'desc')->get();
             $comments = Comment::take(100)->where('id', '>', $commentid)->orderBy('id', 'asc')->get();
 
-//die($words);
-//die($comments);
-
-            // Check if items
+            // Check if any items
             if (!$words->isEmpty() || !$comments->isEmpty()) {
 
             	$theView = $this->getWords($words);
@@ -41,7 +38,7 @@ class LongPollingController extends BaseController {
     private function getWords($words) 
     {
 
-        if (is_object($words[0])) {
+        if (!$words->isEmpty()) {
 
             $theView = View::make('words.index', array('words' => $words))->render();
 
@@ -58,11 +55,11 @@ class LongPollingController extends BaseController {
     private function getComments($comments) 
     {
 
-        if (is_object($comments[0])) {
+        if (!$comments->isEmpty()) {
 
             $theView = View::make('comments.index', array('comments' => $comments))->render();
 
-            $theView .= '<script> $(".lastCommentId").removeClass($(".lastCommentId").attr("class").split(" ")[1]).addClass("'.$comments[0]->id.'"); </script>';
+            $theView .= '<script> $(".lastCommentId").removeClass($(".lastCommentId").attr("class").split(" ")[1]).addClass("'.$comments[sizeof($comments)-1]->id.'"); </script>';
 
             return $theView;
 
@@ -71,6 +68,8 @@ class LongPollingController extends BaseController {
         return '';
 
     }
+
+
 
     
 }
