@@ -20,6 +20,7 @@ web1:
     - curl
     - gd
   before_deploy:
+    - "composer update"
     - "php artisan migrate:install"
     - "php artisan migrate"
   after_deploy:
