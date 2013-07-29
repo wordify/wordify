@@ -56,7 +56,10 @@ class WordsController extends BaseController {
         while((time() - $time) < 25) {
 
             $words = Word::take(100)->where('id', '>', $wordid)->orderBy('id', 'desc')->get();
+            $comments = Comment::take(100)->where('id', '>', $commentid)->orderBy('id', 'desc')->get();
 
+
+            die($comments);
             //die($words);
 
             if (!$words->isEmpty()) {
@@ -69,7 +72,9 @@ class WordsController extends BaseController {
 
                     $theView = View::make('words.index', array('words' => $words))->render();
 
-                    $theView .= '<script> $(".lastWordId").removeClass($(".lastWordId").attr("class").split(" ")[1]).addClass("'.$words[0]->id.'");</script>';
+                    $theView .= '<script>';
+                    $theView .= '$(".lastWordId").removeClass($(".lastWordId").attr("class").split(" ")[1]).addClass("'.$words[0]->id.'");';
+                    $theView .= '</script>';
 
                 }
 

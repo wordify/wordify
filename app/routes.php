@@ -35,7 +35,7 @@ Route::post('/user/follow/{follow1}', 'UsersController@getFollowers');
 Route::get('login/{provider}', 'OauthController@index');
 
 // Get new words
-Route::post('getNewWords', 'WordsController@longPolling');
+Route::post('getNewWords', 'LongPollingController@longPolling');
 
 // Resources
 Route::resource('image', 'ImageController');
