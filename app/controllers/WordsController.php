@@ -55,7 +55,9 @@ class WordsController extends BaseController {
 
         while((time() - $time) < 25) {
 
-            $words = Word::take(100)->where('id', '>', $wordid)->orderBy('created_at', 'desc')->get();
+            $words = Word::take(100)->where('id', '>', $wordid)->orderBy('id', 'desc')->get();
+
+            //die($words);
 
             if (!$words->isEmpty()) {
 
