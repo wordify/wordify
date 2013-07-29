@@ -2,7 +2,7 @@ global:
   env:
     - LARAVEL_ENV: production
 web1:
-  name: your-app-name
+  name: wordify
   shared_writable_dirs:
     - /storage/cache
     - /storage/database
