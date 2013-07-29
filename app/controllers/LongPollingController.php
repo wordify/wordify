@@ -19,10 +19,7 @@ class LongPollingController extends BaseController {
             $words = Word::take(100)->where('id', '>', $wordid)->orderBy('id', 'desc')->get();
             $comments = Comment::take(100)->where('id', '>', $commentid)->orderBy('id', 'asc')->get();
 
-//die($words);
-//die($comments);
-
-            // Check if items
+            // Check if any items
             if (!$words->isEmpty() || !$comments->isEmpty()) {
 
             	$theView = $this->getWords($words);
@@ -71,6 +68,8 @@ class LongPollingController extends BaseController {
         return '';
 
     }
+
+    
 
     
 }
