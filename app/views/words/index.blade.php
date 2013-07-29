@@ -9,7 +9,7 @@
 		</div>
 		<div class="commentBlock" id="commentBlock{{ $word->id }}">
 			<div class="commentList" style="display: none;"></div>
-			<span class="guessBtn" onclick="">GUESS WHAT <b>{{ $word->user->username }}</b> IS THINKING... <b><span style="font-style: normal;">(</span><span class="guessCount {{ $word->id }}">2</span><span style="font-style: normal;">)</span></b></span><input type="text" class="writeComment" name="writeComment" placeholder="WRITE YOUR GUESS..." style="display: none;">
+			<span class="guessBtn" onclick="">GUESS WHAT <b>{{ $word->user->username }}</b> IS THINKING... <b><span style="font-style: normal;">(</span><span class="guessCount {{ $word->id }}">0</span><span style="font-style: normal;">)</span></b></span><input type="text" class="writeComment" name="writeComment" placeholder="WRITE YOUR GUESS..." style="display: none;">
 		</div>
 	</div>
 @endforeach
