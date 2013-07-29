@@ -20,7 +20,8 @@ class UsersTableSeeder extends Seeder {
         			'created_at'	=>	'2013-02-18 21:20:02',
         			'updated_at'	=>	'2013-02-18 21:20:02',
         			'profilePicture'	=>	'https://graph.facebook.com/1320819338/picture?width=400&height=400',
-                    'provider_id' => '1320819338'
+                    'provider_id' => '1320819338',
+                    'imagepath' => Hash::make('kyllesdk'),
         		)
         );
 
