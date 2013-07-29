@@ -15,7 +15,7 @@ class HomeController extends BaseController {
 	*/
 	public function index() {
 
-		$usersController = new usersController();
+		$usersController = new UsersController();
 		$wordsController = new WordsController();
 		
 		$users = $usersController->index();
