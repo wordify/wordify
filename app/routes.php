@@ -38,6 +38,7 @@ Route::get('login/{provider}', 'OauthController@index');
 Route::post('getNewItems', 'LongPollingController@longPolling');
 
 // Resources
+Route::resource('image', 'ImageController');
 Route::resource('users', 'UsersController');
 Route::resource('words', 'WordsController');
 Route::resource('topics', 'TopicsController');

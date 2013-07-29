@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '127.0.0.1',
+			'host'      => 'tunnel.pagodabox.com:3306',
 			'database'  => 'wordify',
-			'username'  => 'root',
-			'password'  => '',
+			'username'  => 'georgia',
+			'password'  => '7XskByIz',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

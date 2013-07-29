@@ -29,6 +29,11 @@ $(function() {
 		});
 	});
 
+	// Edit profile picture button clicked
+	$(document).on('click', '.profilePicEditBox', function() {
+		openModal('profilepictureModal');
+	})
+
 });
 
 

@@ -53,7 +53,7 @@ class OauthController extends BaseController {
 
                 $userObj = new User();
                 $userObj->username = $user['nickname'];
-                $userObj->password = Hash::make(rand(1, 10000000));
+                $userObj->password = Hash::make("".rand(1, 10000000)."");
                 $userObj->name = $user['name'];
                 $userObj->email = $user['email'];
                 $userObj->profilePicture = $profilePicture;
