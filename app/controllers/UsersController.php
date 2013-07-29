@@ -148,7 +148,7 @@ class UsersController extends BaseController {
     **/
     public function getProfile() {
         
-        user = User::find(Input::get('userId'));
+        $user = User::find(Input::get('userId'));
         $followers = $this->getFollowersCount(Input::get('userId'));
         $following = $this->getFollowingCount(Input::get('userId'));
         $words = $this->getLastTenWords(Input::get('userId'));
@@ -166,10 +166,10 @@ class UsersController extends BaseController {
 
         $commentCount = $this->getLastTenWordsTotalCommentCount(Input::get('userId'));
         if(is_null($user)) {
-            $theView = View::make('users.profile', ['user' => false])->render();
+            $theView = View::make('users.profile', array('user' => false))->render();
         } else {
             $theView = View::make('users.profile', 
-                ['user' => $user, 'followers' => $followers, 'following' => $following, 'words' => $wordarray, 'totalCount' => $commentCount, 'followstatus' => $followstatus])
+                array('user' => $user, 'followers' => $followers, 'following' => $following, 'words' => $wordarray, 'totalCount' => $commentCount, 'followstatus' => $followstatus))
                 ->render();
         }
         
