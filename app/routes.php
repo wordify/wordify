@@ -35,7 +35,7 @@ Route::post('/user/following', 'UsersController@getFollowing');
 Route::get('login/{provider}', 'OauthController@index');
 
 // Get new words
-Route::post('getNewWords', 'WordsController@longPolling');
+Route::post('getNewWords', 'LongPollingController@longPolling');
 
 // Resources
 Route::resource('users', 'UsersController');

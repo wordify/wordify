@@ -172,6 +172,7 @@ select {
 	border: 0px solid #000;
 	margin-left: 120px;
 	clear:both;
+	margin-top: 10px;
 }
 
 .guessBtn {
@@ -196,6 +197,7 @@ select {
 	font-size: 25px;
 	margin-bottom: 10px;
 	margin-top:10px;
+	margin-left: 35px;
 	text-transform:uppercase;
 	clear:both;
 }
@@ -799,4 +801,14 @@ select {
 	border: 0;
 	border-bottom: 1px solid;
 	text-transform: uppercase;
+}
+
+.acommentBox {
+	float: left; 
+	width: 90%;
+	border: 1px solid #CCCCCC;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	padding: 5px;
+	background: #E8E8E8;
 }
