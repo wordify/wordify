@@ -17,10 +17,11 @@ $(function() {
     });
 
     // Followed number clicked
-	$(document).on('click', '.profileFollowedNumber', function() {	
+	$(document).on('click', '.profileFollowNumber', function() {	
 		var userId = $('#profileBox').attr('class');
-		
-		$.post('/user/following', {
+		var follow = $(this).attr('class').split(' ')[2];
+		console.log("Follow: " + follow);
+		$.post('/user/follow/'+follow+'', {
 			userId: userId
 		}).done(function(data) {
 			openModal('followedModal');

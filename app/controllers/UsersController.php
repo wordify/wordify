@@ -195,19 +195,37 @@ class UsersController extends BaseController {
     * @param int userId
     * @return arrayOfObjects users
     **/
-    public function getFollowing() {
-        $following = Follow::where('useridfollower', '=', Input::get('userId'))->select('useridfollowed')->get();
-
-        if(!is_null($following->first())) {
+    public function getFollowers($follow) {
+        // If following number is clicked all the userids the user is following is fetched
+        if($follow == 'following') {
+            $following = Follow::where('useridfollower', '=', Input::get('userId'))
+                ->select('useridfollowed')->get();
 
             // get all the userid's
             $userIds = array();
             foreach ($following as $f) {
                 $userIds[] = $f->useridfollowed;
             }
+        }
+
+        // If followers number is clicked all the userids the user is followed by is fetched.
+        if($follow == 'followed') {
+            $following = Follow::where('useridfollowed', '=', Input::get('userId'))
+                ->select('useridfollower')->get();
+
+            // get all the userid's
+            $userIds = array();
+            foreach ($following as $f) {
+                $userIds[] = $f->useridfollower;
+            }
+        }
+
+
+        if(!is_null($following->first())) {
 
             // Get all the followed users
             $users = User::whereIn('id', $userIds)->select('id', 'username', 'name', 'profilePicture')->get();
+
             foreach ($users as $u) {
             echo '<div class="username '.$u->id.' followList">
                     <img src="'.$u->profilePicture.'" 
@@ -220,17 +238,6 @@ class UsersController extends BaseController {
         } else {
             echo '<h3>The user is not following anyone yet!';
         }
-    }
-
-    /**
-    * Gets the users that the user is being followed by
-    * @param int userId
-    * @return arrayOfObjects users
-    **/
-    public function getFollowers($userId) {
-        $followers = Follow::where('useridfollowed', '=', $userId)->get();
-
-        return $followers;
     }
 
     /**
