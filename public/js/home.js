@@ -64,7 +64,7 @@ function startRefresh() {
 
 function startLoadWords() {
 
-	$.ajax({
+	longpending = $.ajax({
 		type: 'POST',
 		url: '/getNewItems',
 		//url: '/test.php',
