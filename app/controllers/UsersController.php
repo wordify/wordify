@@ -166,7 +166,7 @@ class UsersController extends BaseController {
 
         $commentCount = $this->getLastTenWordsTotalCommentCount(Input::get('userId'));
         if(is_null($user)) {
-            $theView = View::make('users.profile', array('user' => false))->render();
+            $theView = View::make('users.profile', ['user' => false])->render();
         } else {
             $theView = View::make('users.profile', 
                 array('user' => $user, 'followers' => $followers, 'following' => $following, 'words' => $wordarray, 'totalCount' => $commentCount, 'followstatus' => $followstatus))
