@@ -28,8 +28,8 @@
                 </div>
             @endif
 
-                <a href="#" class="profileFollowedNumber {{ $user->id }} profileStatusBarNumber">{{ $following }}</a> Following<br/>
-                <a href="#" class="profileFollowersNumber profileStatusBarNumber">{{ $followers }}</a> Followers<br/><br/>
+                <a href="#" class="profileFollowNumber profileStatusBarNumber following">{{ $following }}</a> Following<br/>
+                <a href="#" class="profileFollowNumber profileStatusBarNumber followed">{{ $followers }}</a> Followers<br/><br/>
             @unless(is_null($user->country) && is_null($user->website) && is_null($user->job))
                 @unless(is_null($user->country)) Is from  {{ $user->country }}<br/> @endunless
                 @unless(is_null($user->website)) <a href="{{ $user->website }}" target="_BLANK">Homepage link</a><br/>@endunless
